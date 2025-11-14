@@ -1,16 +1,22 @@
-// Interface TypeScript pour Paiement
+/**
+ * Énumérations pour les moyens et statuts de paiement
+ */
 export enum PaiementMoyen {
-  CARTE = 'carte',
-  ESPECE = 'espece',
-  VIREMENT = 'virement'
+  CARTE = 'Carte',
+  ESPECES = 'Espèces',
+  VIREMENT = 'Virement',
+  EN_LIGNE = 'En ligne'
 }
 
 export enum PaiementStatut {
-  EN_ATTENTE = 'en_attente',
-  PAYE = 'paye',
-  REMBOURSE = 'rembourse'
+  VALIDE = 'Validé',
+  EN_ATTENTE = 'En attente',
+  ECHOUE = 'Échoué'
 }
 
+/**
+ * Interface représentant un paiement
+ */
 export interface Paiement {
   id_paiement: number;
   id_location: number;
@@ -20,12 +26,18 @@ export interface Paiement {
   statut: PaiementStatut;
 }
 
+/**
+ * Interface pour créer un nouveau paiement
+ */
 export interface CreatePaiementDto {
   id_location: number;
   montant: number;
   moyen: PaiementMoyen;
 }
 
+/**
+ * Interface pour mettre à jour un paiement
+ */
 export interface UpdatePaiementDto {
   montant?: number;
   moyen?: PaiementMoyen;

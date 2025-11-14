@@ -1,6 +1,3 @@
-/**
- * Interface représentant un album musical
- */
 export interface Album {
     id_album: number;
     titre: string;
@@ -12,9 +9,6 @@ export interface Album {
     ean: string;
 }
 
-/**
- * Interface pour créer un nouvel album
- */
 export interface CreateAlbumDto {
     titre: string;
     artiste: string;
@@ -25,9 +19,6 @@ export interface CreateAlbumDto {
     description?: string;
 }
 
-/**
- * Interface pour mettre à jour un album
- */
 export interface UpdateAlbumDto {
     titre?: string;
     artiste?: string;

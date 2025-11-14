@@ -1,35 +1,47 @@
-// Interface TypeScript pour Exemplaire
+/**
+ * Énumérations pour les statuts et états des exemplaires
+ */
 export enum ExemplaireStatut {
-  DISPONIBLE = 'disponible',
-  LOUE = 'loue',        
-  RESERVE = 'reserve'  
+  DISPONIBLE = 'Disponible',
+  LOUE = 'Loué',        
+  RESERVE = 'Reservé',
+  PERDU = 'Perdu'
 }
 
 export enum ExemplaireEtat {
-  NEUF = 'neuf',
-  BON = 'bon',
-  ACCEPTABLE = 'acceptable',
-  MAUVAIS = 'mauvais'
+  NEUF = 'Neuf',
+  BON = 'Bon',
+  USE = 'Usé',
+  ENDOMMAGE = 'Endommagé'
 }
 
+/**
+ * Interface représentant un exemplaire d'album
+ */
 export interface Exemplaire {
   id_exemplaire: number;
   id_album: number;
-  code_barre: string;
+  num_inventaire: string;
   statut: ExemplaireStatut;
   etat: ExemplaireEtat;
-  date_acquisition: Date;
+  date_achat: Date;
 }
 
+/**
+ * Interface pour créer un nouvel exemplaire
+ */
 export interface CreateExemplaireDto {
   id_album: number;
-  code_barre: string;
+  num_inventaire: string;
   statut: ExemplaireStatut;
   etat: ExemplaireEtat;
 }
 
+/**
+ * Interface pour mettre à jour un exemplaire
+ */
 export interface UpdateExemplaireDto {
-  code_barre?: string;
+  num_inventaire?: string;
   statut?: ExemplaireStatut;
   etat?: ExemplaireEtat;
 }
