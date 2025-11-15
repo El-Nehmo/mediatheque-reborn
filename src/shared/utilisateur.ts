@@ -17,9 +17,6 @@ export interface Utilisateur {
   id_role: number;
 }
 
-/**
- * Interface pour créer un nouvel utilisateur
- */
 export interface CreateUtilisateurDto {
   nom: string;
   prenom: string;
@@ -34,9 +31,6 @@ export interface CreateUtilisateurDto {
   ville?: string;
 }
 
-/**
- * Interface pour mettre à jour un utilisateur
- */
 export interface UpdateUtilisateurDto {
   nom?: string;
   prenom?: string;

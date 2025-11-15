@@ -4,7 +4,6 @@ import { Album, CreateAlbumDto, UpdateAlbumDto } from '../../shared/album';
 
 const prisma = new PrismaClient();
 
-
 export class AlbumRepository {
   
   async findAll(): Promise<Album[]> {
@@ -22,7 +21,6 @@ export class AlbumRepository {
       data:data
     });
   }
-
 
   async update(id: number, data: UpdateAlbumDto): Promise<Album> {
     return await prisma.albums.update({

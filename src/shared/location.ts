@@ -7,9 +7,6 @@ export enum LocationStatut {
   EN_RETARD = 'En retard'
 }
 
-/**
- * Interface représentant une location
- */
 export interface Location {
   id_location: number;
   id_utilisateur: number;
@@ -23,9 +20,6 @@ export interface Location {
   statut: LocationStatut;
 }
 
-/**
- * Interface pour créer une nouvelle location
- */
 export interface CreateLocationDto {
   id_utilisateur: number;
   id_exemplaire: number;
@@ -34,9 +28,6 @@ export interface CreateLocationDto {
   id_reservation?: number;
 }
 
-/**
- * Interface pour mettre à jour une location
- */
 export interface UpdateLocationDto {
   date_retour_prevue?: Date;
   date_retour_reelle?: Date;

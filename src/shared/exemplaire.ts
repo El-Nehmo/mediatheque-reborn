@@ -15,9 +15,6 @@ export enum ExemplaireEtat {
   ENDOMMAGE = 'Endommagé'
 }
 
-/**
- * Interface représentant un exemplaire d'album
- */
 export interface Exemplaire {
   id_exemplaire: number;
   id_album: number;
@@ -27,9 +24,6 @@ export interface Exemplaire {
   date_achat: Date;
 }
 
-/**
- * Interface pour créer un nouvel exemplaire
- */
 export interface CreateExemplaireDto {
   id_album: number;
   num_inventaire: string;
@@ -37,9 +31,6 @@ export interface CreateExemplaireDto {
   etat: ExemplaireEtat;
 }
 
-/**
- * Interface pour mettre à jour un exemplaire
- */
 export interface UpdateExemplaireDto {
   num_inventaire?: string;
   statut?: ExemplaireStatut;

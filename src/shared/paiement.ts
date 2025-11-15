@@ -14,9 +14,6 @@ export enum PaiementStatut {
   ECHOUE = 'Échoué'
 }
 
-/**
- * Interface représentant un paiement
- */
 export interface Paiement {
   id_paiement: number;
   id_location: number;
@@ -26,18 +23,12 @@ export interface Paiement {
   statut: PaiementStatut;
 }
 
-/**
- * Interface pour créer un nouveau paiement
- */
 export interface CreatePaiementDto {
   id_location: number;
   montant: number;
   moyen: PaiementMoyen;
 }
 
-/**
- * Interface pour mettre à jour un paiement
- */
 export interface UpdatePaiementDto {
   montant?: number;
   moyen?: PaiementMoyen;

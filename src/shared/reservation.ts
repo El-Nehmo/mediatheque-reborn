@@ -7,9 +7,6 @@ export enum ReservationStatut {
   TERMINEE = 'Terminée'
 }
 
-/**
- * Interface représentant une réservation
- */
 export interface Reservation {
   id_reservation: number;
   id_utilisateur: number;
@@ -19,9 +16,6 @@ export interface Reservation {
   statut: ReservationStatut;
 }
 
-/**
- * Interface pour créer une nouvelle réservation
- */
 export interface CreateReservationDto {
   id_utilisateur: number;
   id_exemplaire: number;
@@ -29,9 +23,6 @@ export interface CreateReservationDto {
   date_fin: Date;
 }
 
-/**
- * Interface pour mettre à jour une réservation
- */
 export interface UpdateReservationDto {
   date_debut?: Date;
   date_fin?: Date;
