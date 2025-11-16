@@ -28,9 +28,6 @@ export class UtilisateurRepository {
     });
   }
 
-  /**
-   * Mettre à jour un utilisateur
-   */
   async update(id: number, data: UpdateUtilisateurDto): Promise<Utilisateur> {
     return await prisma.utilisateurs.update({
       where: { id_utilisateur: id },
