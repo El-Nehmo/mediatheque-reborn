@@ -1,11 +1,10 @@
-// Handlers IPC pour les catégories
 import { ipcMain } from 'electron';
 import { CategorieService } from '../services/categorieService';
 
 const categorieService = new CategorieService();
 
 export function registerCategorieHandlers() {
-    
+
   ipcMain.handle('categorie:getAll', async () => {
     return await categorieService.getAllCategories();
   });
