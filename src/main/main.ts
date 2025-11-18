@@ -2,6 +2,13 @@ import { app, BrowserWindow } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
 import dotenv from 'dotenv';
+import { registerAlbumHandlers } from './handlers/albumHandlers';
+import { registerCategorieHandlers } from './handlers/categorieHandlers';
+import { registerUtilisateurHandlers } from './handlers/utilisateurHandlers';
+import { registerExemplaireHandlers } from './handlers/exemplaireHandlers';
+import { registerLocationHandlers } from './handlers/locationHandlers';
+import { registerReservationHandlers } from './handlers/reservationHandlers';
+import { registerPaiementHandlers } from './handlers/paiementHandlers';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
@@ -36,7 +43,17 @@ const createWindow = () => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.on('ready', () => {
+  createWindow();
+  // Activation des handlers IPC
+  registerAlbumHandlers();
+  registerCategorieHandlers();
+  registerUtilisateurHandlers();
+  registerExemplaireHandlers();
+  registerLocationHandlers();
+  registerReservationHandlers();
+  registerPaiementHandlers();
+});
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
