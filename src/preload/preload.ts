@@ -2,5 +2,7 @@ import { contextBridge, ipcRenderer } from "electron";
 import IElectronService from "src/shared/interfaces/IElectronService";
 
 contextBridge.exposeInMainWorld("electronService", {
-    // Services pour la médiathèque seront exposés ici
+    getAlbums: async () => {
+        return await ipcRenderer.invoke("getAlbums");
+    }
 } as IElectronService)
