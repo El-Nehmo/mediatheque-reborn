@@ -1,5 +1,6 @@
 export default interface IElectronService {
-    // Services pour la médiathèque seront ajoutés ici
+    getAlbums(): Promise<any[]>;
+    // D'autres services pourront être ajoutés ici
 }
 
 declare global {
