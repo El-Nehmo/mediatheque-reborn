@@ -25,4 +25,8 @@ contextBridge.exposeInMainWorld("electronService", {
         const result = await ipcRenderer.invoke('reservation:getAll');
         return result.data ?? [];
     },
+    getPaiements: async () => {
+        const result = await ipcRenderer.invoke('paiement:getAll');
+        return result.data ?? [];
+    },
 });

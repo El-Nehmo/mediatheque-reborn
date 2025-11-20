@@ -6,6 +6,7 @@ export default interface IElectronService {
     getExemplaires(): Promise<any[]>;
     getLocations(): Promise<Location[]>;
     getReservations(): Promise<any[]>;
+    getPaiements(): Promise<any[]>;
     // D'autres services pourront être ajoutés ici
 }
 

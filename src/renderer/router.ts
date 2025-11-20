@@ -8,6 +8,7 @@ import Utilisateurs from "./pages/Utilisateurs.vue";
 import Exemplaires from "./pages/Exemplaires.vue";
 import Locations from "./pages/Locations.vue";
 import Reservations from "./pages/Reservations.vue";
+import Paiements from "./pages/Paiements.vue";
 
 const routes = [
     { path: '/', component: Home },
@@ -17,7 +18,8 @@ const routes = [
     { path: '/utilisateurs', component: Utilisateurs },
     { path: '/exemplaires', component: Exemplaires },
     { path: '/locations', component: Locations },
-    { path: '/reservations', component: Reservations }
+    { path: '/reservations', component: Reservations },
+    { path: '/paiements', component: Paiements }
 ]
 
 export const router = createRouter({routes, history: createMemoryHistory()});
