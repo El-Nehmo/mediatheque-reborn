@@ -41,4 +41,7 @@ contextBridge.exposeInMainWorld("electronService", {
     loginUser: async (data: { email: string; password: string }) => {
         return await ipcRenderer.invoke('user:login', data);
     },
+    createUtilisateur: async (data: import("../shared/utilisateur").CreateUtilisateurDto) => {
+        return await ipcRenderer.invoke('utilisateur:create', data);
+    },
 });
