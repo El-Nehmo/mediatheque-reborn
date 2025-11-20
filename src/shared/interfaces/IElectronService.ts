@@ -3,6 +3,7 @@ export default interface IElectronService {
     getAlbumById(id: number): Promise<any>;
     getCategories(): Promise<any[]>;
     getUtilisateurs(): Promise<any[]>;
+    getExemplaires(): Promise<any[]>;
     // D'autres services pourront être ajoutés ici
 }
 

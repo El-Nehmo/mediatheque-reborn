@@ -1,9 +1,7 @@
 <template>
-  <div class="list-container">
-    <h1>Médiathèque</h1>
-    <p>Bienvenue dans votre médiathèque</p>
+  <div class="albums-list">
+    <h1>Liste des albums</h1>
     <div v-if="albums.length">
-      <h2>Albums :</h2>
       <ul>
         <li v-for="album in albums" :key="album.id_album">
           {{ album.titre }} — {{ album.artiste }}
@@ -31,14 +29,9 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-
-.list-container {
-  display: flex;
-  flex-direction: column;
+.albums-list {
+  max-width: 800px;
   margin: 0 auto;
-  gap: 1rem;
-  padding: 1rem;
-  max-width: 75%;
+  padding: 2rem;
 }
-
 </style>

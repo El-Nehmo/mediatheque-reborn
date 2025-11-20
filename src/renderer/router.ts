@@ -5,13 +5,15 @@ import Albums from "./pages/Albums.vue";
 import AlbumDetail from "./pages/AlbumDetail.vue";
 import Categories from "./pages/Categories.vue";
 import Utilisateurs from "./pages/Utilisateurs.vue";
+import Exemplaires from "./pages/Exemplaires.vue";
 
 const routes = [
     { path: '/', component: Home },
     { path: '/albums', component: Albums },
     { path: '/albums/:id_album', component: AlbumDetail },
     { path: '/categories', component: Categories },
-    { path: '/utilisateurs', component: Utilisateurs }
+    { path: '/utilisateurs', component: Utilisateurs },
+    { path: '/exemplaires', component: Exemplaires }
 ]
 
 export const router = createRouter({routes, history: createMemoryHistory()});
