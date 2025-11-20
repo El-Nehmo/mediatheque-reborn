@@ -7,6 +7,7 @@ import Categories from "./pages/Categories.vue";
 import Utilisateurs from "./pages/Utilisateurs.vue";
 import Exemplaires from "./pages/Exemplaires.vue";
 import Locations from "./pages/Locations.vue";
+import Reservations from "./pages/Reservations.vue";
 
 const routes = [
     { path: '/', component: Home },
@@ -15,7 +16,8 @@ const routes = [
     { path: '/categories', component: Categories },
     { path: '/utilisateurs', component: Utilisateurs },
     { path: '/exemplaires', component: Exemplaires },
-    { path: '/locations', component: Locations }
+    { path: '/locations', component: Locations },
+    { path: '/reservations', component: Reservations }
 ]
 
 export const router = createRouter({routes, history: createMemoryHistory()});
