@@ -29,4 +29,16 @@ contextBridge.exposeInMainWorld("electronService", {
         const result = await ipcRenderer.invoke('paiement:getAll');
         return result.data ?? [];
     },
+    createAlbum: async (data: import("../shared/album").CreateAlbumDto) => {
+        return await ipcRenderer.invoke('album:create', data);
+    },
+    updateAlbum: async (id: number, data: import("../shared/album").UpdateAlbumDto) => {
+        return await ipcRenderer.invoke('album:update', id, data);
+    },
+    deleteAlbum: async (id: number) => {
+        return await ipcRenderer.invoke('album:delete', id);
+    },
+    loginUser: async (data: { email: string; password: string }) => {
+        return await ipcRenderer.invoke('user:login', data);
+    },
 });

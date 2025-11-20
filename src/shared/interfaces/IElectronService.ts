@@ -7,6 +7,10 @@ export default interface IElectronService {
     getLocations(): Promise<Location[]>;
     getReservations(): Promise<any[]>;
     getPaiements(): Promise<any[]>;
+    createAlbum(data: any): Promise<any>;
+    updateAlbum(id: number, data: import("../album").UpdateAlbumDto): Promise<any>;
+    deleteAlbum(id: number): Promise<any>;
+    loginUser(data: { email: string; password: string }): Promise<any>;
     // D'autres services pourront être ajoutés ici
 }
 
