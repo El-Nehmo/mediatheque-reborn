@@ -6,6 +6,7 @@ import AlbumDetail from "./pages/AlbumDetail.vue";
 import Categories from "./pages/Categories.vue";
 import Utilisateurs from "./pages/Utilisateurs.vue";
 import Exemplaires from "./pages/Exemplaires.vue";
+import Locations from "./pages/Locations.vue";
 
 const routes = [
     { path: '/', component: Home },
@@ -13,7 +14,8 @@ const routes = [
     { path: '/albums/:id_album', component: AlbumDetail },
     { path: '/categories', component: Categories },
     { path: '/utilisateurs', component: Utilisateurs },
-    { path: '/exemplaires', component: Exemplaires }
+    { path: '/exemplaires', component: Exemplaires },
+    { path: '/locations', component: Locations }
 ]
 
 export const router = createRouter({routes, history: createMemoryHistory()});

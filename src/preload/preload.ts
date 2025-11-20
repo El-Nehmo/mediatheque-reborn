@@ -16,5 +16,9 @@ contextBridge.exposeInMainWorld("electronService", {
     },
     getExemplaires: async () => {
         return await ipcRenderer.invoke("getExemplaires");
-    }
+    },
+    getLocations: async () => {
+        const result = await ipcRenderer.invoke('location:getAll');
+        return result.data ?? [];
+    },
 });
