@@ -96,4 +96,19 @@ export class UtilisateurService {
       return { success: false, error: 'Erreur lors de la suppression de l\'utilisateur' };
     }
   }
+  async loginUser(data: { email: string; password: string }) {
+    try {
+      const utilisateur = await this.utilisateurRepository.findByEmail(data.email);
+      if (!utilisateur) {
+        return { success: false, error: 'Utilisateur non trouvé' };
+      }
+    
+      if (data.password !== utilisateur.password_hash) { // À remplacer par une vraie vérification hash
+        return { success: false, error: 'Mot de passe incorrect' };
+      }
+      return { success: true, data: utilisateur };
+    } catch (error) {
+      return { success: false, error: 'Erreur lors de la connexion utilisateur' };
+    }
+  }
 }
