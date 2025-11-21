@@ -1,26 +1,31 @@
 // Repository pour gérer les paiements
 import { PrismaClient } from './prisma/generated/client';
+import {PrismaMariaDb} from '@prisma/adapter-mariadb';
 import type { paiementsCreateInput, paiementsUpdateInput } from './prisma/generated/models/paiements';
-
-const prisma = new PrismaClient();
 
 /**
  * Repository pour gérer les paiements dans la base de données
  */
 export class PaiementRepository {
+
+  private dbclient: PrismaClient;
+  constructor() {
+    let adapter = new PrismaMariaDb(process.env.DATABASE_URL);
+    this.dbclient = new PrismaClient({ adapter });
+  }
   
   /**
    * Récupérer tous les paiements
    */
   async findAll() {
-    return await prisma.paiements.findMany();
+    return await this.dbclient.paiements.findMany();
   }
 
   /**
    * Récupérer un paiement par son ID
    */
   async findById(id: number) {
-    return await prisma.paiements.findUnique({
+    return await this.dbclient.paiements.findUnique({
       where: { id_paiement: id }
     });
   }
@@ -29,7 +34,7 @@ export class PaiementRepository {
    * Récupérer tous les paiements d'une location
    */
   async findByLocationId(locationId: number) {
-    return await prisma.paiements.findMany({
+    return await this.dbclient.paiements.findMany({
       where: { id_location: locationId }
     });
   }
@@ -38,7 +43,7 @@ export class PaiementRepository {
    * Créer un nouveau paiement
    */
   async create(data: paiementsCreateInput) {
-    return await prisma.paiements.create({
+    return await this.dbclient.paiements.create({
       data
     });
   }
@@ -47,7 +52,7 @@ export class PaiementRepository {
    * Mettre à jour un paiement
    */
   async update(id: number, data: paiementsUpdateInput) {
-    return await prisma.paiements.update({
+    return await this.dbclient.paiements.update({
       where: { id_paiement: id },
       data
     });
@@ -57,7 +62,7 @@ export class PaiementRepository {
    * Supprimer un paiement
    */
   async delete(id: number) {
-    return await prisma.paiements.delete({
+    return await this.dbclient.paiements.delete({
       where: { id_paiement: id }
     });
   }

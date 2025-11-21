@@ -4,7 +4,6 @@ import { UtilisateurService } from '../services/utilisateurService';
 const utilisateurService = new UtilisateurService();
 
 export function registerUtilisateurHandlers() {
-  
   ipcMain.handle('utilisateur:getAll', async () => {
     return await utilisateurService.getAllUtilisateurs();
   });
@@ -27,5 +26,9 @@ export function registerUtilisateurHandlers() {
 
   ipcMain.handle('utilisateur:delete', async (event, id: number) => {
     return await utilisateurService.deleteUtilisateur(id);
+  });
+
+  ipcMain.handle('user:login', async (event, data: { email: string; password: string }) => {
+    return await utilisateurService.loginUser(data);
   });
 }

@@ -1,72 +1,55 @@
 // Repository pour gérer les réservations
 import { PrismaClient } from './prisma/generated/client';
+import {PrismaMariaDb} from '@prisma/adapter-mariadb';
 import type { reservationsCreateInput, reservationsUpdateInput } from './prisma/generated/models/reservations';
 
-const prisma = new PrismaClient();
-
-/**
- * Repository pour gérer les réservations dans la base de données
- */
 export class ReservationRepository {
+
+  private dbclient: PrismaClient;
+  constructor() {
+    let adapter = new PrismaMariaDb(process.env.DATABASE_URL);
+    this.dbclient = new PrismaClient({ adapter });
+  }
   
-  /**
-   * Récupérer toutes les réservations
-   */
+
   async findAll() {
-    return await prisma.reservations.findMany();
+    return await this.dbclient.reservations.findMany();
   }
 
-  /**
-   * Récupérer une réservation par son ID
-   */
+  
   async findById(id: number) {
-    return await prisma.reservations.findUnique({
+    return await this.dbclient.reservations.findUnique({
       where: { id_reservation: id }
     });
   }
 
-  /**
-   * Récupérer toutes les réservations d'un utilisateur
-   */
   async findByUserId(userId: number) {
-    return await prisma.reservations.findMany({
+    return await this.dbclient.reservations.findMany({
       where: { id_utilisateur: userId }
     });
   }
 
-  /**
-   * Récupérer toutes les réservations d'un exemplaire
-   */
   async findByExemplaireId(exemplaireId: number) {
-    return await prisma.reservations.findMany({
+    return await this.dbclient.reservations.findMany({
       where: { id_exemplaire: exemplaireId }
     });
   }
 
-  /**
-   * Créer une nouvelle réservation
-   */
   async create(data: reservationsCreateInput) {
-    return await prisma.reservations.create({
+    return await this.dbclient.reservations.create({
       data
     });
   }
 
-  /**
-   * Mettre à jour une réservation
-   */
   async update(id: number, data: reservationsUpdateInput) {
-    return await prisma.reservations.update({
+    return await this.dbclient.reservations.update({
       where: { id_reservation: id },
       data
     });
   }
 
-  /**
-   * Supprimer une réservation
-   */
   async delete(id: number) {
-    return await prisma.reservations.delete({
+    return await this.dbclient.reservations.delete({
       where: { id_reservation: id }
     });
   }

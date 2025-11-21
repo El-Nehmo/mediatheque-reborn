@@ -10,6 +10,9 @@
     </form>
     <p v-if="error" class="error">{{ error }}</p>
     <p v-if="success" class="success">{{ success }}</p>
+    <p>
+      <router-link to="/login">Se connecter</router-link>
+    </p>
   </div>
 </template>
 

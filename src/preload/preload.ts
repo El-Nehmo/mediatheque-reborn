@@ -3,7 +3,7 @@ import IElectronService from "src/shared/interfaces/IElectronService";
 
 contextBridge.exposeInMainWorld("electronService", {
     getAlbums: async () => {
-        return await ipcRenderer.invoke("getAlbums");
+        return await ipcRenderer.invoke("album:getAll");
     },
     getAlbumById: async (id: number) => {
         return await ipcRenderer.invoke("getAlbumById", id);

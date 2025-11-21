@@ -43,7 +43,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import '../../style/album-form.css';
+import '../style/album-form.css';
 
 const albums = ref<any[]>([]);
 const form = ref({

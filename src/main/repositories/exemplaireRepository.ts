@@ -1,72 +1,53 @@
-// Repository pour gérer les exemplaires
 import { PrismaClient } from './prisma/generated/client';
+import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 import type { exemplairesCreateInput, exemplairesUpdateInput } from './prisma/generated/models/exemplaires';
 
-const prisma = new PrismaClient();
 
-/**
- * Repository pour gérer les exemplaires dans la base de données
- */
 export class ExemplaireRepository {
+
+  private dbclient: PrismaClient;
+  constructor() {
+    let adapter = new PrismaMariaDb(process.env.DATABASE_URL);
+    this.dbclient = new PrismaClient({ adapter });
+  }
   
-  /**
-   * Récupérer tous les exemplaires
-   */
   async findAll() {
-    return await prisma.exemplaires.findMany();
+    return await this.dbclient.exemplaires.findMany();
   }
 
-  /**
-   * Récupérer un exemplaire par son ID
-   */
   async findById(id: number) {
-    return await prisma.exemplaires.findUnique({
+    return await this.dbclient.exemplaires.findUnique({
       where: { id_exemplaire: id }
     });
   }
 
-  /**
-   * Récupérer tous les exemplaires d'un album
-   */
   async findByAlbumId(albumId: number) {
-    return await prisma.exemplaires.findMany({
+    return await this.dbclient.exemplaires.findMany({
       where: { id_album: albumId }
     });
   }
 
-  /**
-   * Récupérer un exemplaire par son numéro d'inventaire
-   */
   async findByNumInventaire(numInventaire: string) {
-    return await prisma.exemplaires.findUnique({
+    return await this.dbclient.exemplaires.findUnique({
       where: { num_inventaire: numInventaire }
     });
   }
 
-  /**
-   * Créer un nouvel exemplaire
-   */
   async create(data: exemplairesCreateInput) {
-    return await prisma.exemplaires.create({
+    return await this.dbclient.exemplaires.create({
       data
     });
   }
 
-  /**
-   * Mettre à jour un exemplaire
-   */
   async update(id: number, data: exemplairesUpdateInput) {
-    return await prisma.exemplaires.update({
+    return await this.dbclient.exemplaires.update({
       where: { id_exemplaire: id },
       data
     });
   }
 
-  /**
-   * Supprimer un exemplaire
-   */
   async delete(id: number) {
-    return await prisma.exemplaires.delete({
+    return await this.dbclient.exemplaires.delete({
       where: { id_exemplaire: id }
     });
   }

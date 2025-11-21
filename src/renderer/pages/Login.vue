@@ -7,6 +7,9 @@
       <button type="submit">Login</button>
     </form>
     <p v-if="error" class="error">{{ error }}</p>
+    <p>
+      <router-link to="/register">S'inscrire</router-link>
+    </p>
   </div>
 </template>
 
